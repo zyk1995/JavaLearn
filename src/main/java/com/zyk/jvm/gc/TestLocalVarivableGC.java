@@ -66,12 +66,10 @@ public class TestLocalVarivableGC {
     }
 
     private static void OOM_HOLD() {
-        System.gc();
         List<Test> list = new ArrayList<>();
         while (true) {
             list.add(new Test());
         }
-
     }
 
     private static void OOM_NEW() {
@@ -79,6 +77,5 @@ public class TestLocalVarivableGC {
             Test test = new Test();
             test = null;
         }
-
     }
 }
