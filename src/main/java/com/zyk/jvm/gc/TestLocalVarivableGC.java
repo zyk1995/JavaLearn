@@ -9,7 +9,7 @@ import sun.misc.GC;
 import java.util.ArrayList;
 import java.util.List;
 
-// vm options: -XX:+PrintGCDetails -XX:+PrintGC -Xms20M -Xmx20M
+// vm options: -XX:+PrintGCDetails -XX:+PrintGC -Xms20M -Xmx20M -XX:+PrintHeapAtGC -XX:+PrintGCTimeStamps
 public class TestLocalVarivableGC {
 
     public static void main(String[] args) {
@@ -19,8 +19,10 @@ public class TestLocalVarivableGC {
 //        gc2();
 //        gc3();
 //        gcLoop1();
-        OOM_HOLD();
+        gcLoopLoop();
+       // OOM_HOLD();
         //OOM_NEW();
+        //OOM_NEW1();
     }
 
 
@@ -66,18 +68,47 @@ public class TestLocalVarivableGC {
         System.gc();
     }
 
+    private static void gcLoopLoop() {
+        for (int i = 0; i < 100000; i++) {
+            for (int j = 0; j < 6000; j++) {
+                Test test = new Test();
+            }
+
+        }
+    }
+
     private static void OOM_HOLD() {
         List<Test> list = new ArrayList<>();
+        int count = 0;
         while (true) {
             list.add(new Test());
+            count++;
+            System.out.println(count);
+
         }
+
     }
 
     private static void OOM_NEW() {
 //        GC overhead limit exceeded 当JVM花太多时间执行垃圾回收并且只能回收很少的堆空间时，就会发生该错误
+        int count = 0;
         while (true) {
             Test test = new Test();
             test = null;
+            count++;
+            System.out.println(count);
+
+        }
+    }
+
+    private static void OOM_NEW1() {
+//        GC overhead limit exceeded 当JVM花太多时间执行垃圾回收并且只能回收很少的堆空间时，就会发生该错误
+        int count = 0;
+        while (true) {
+            Test test = new Test();
+            count++;
+            System.out.println(count);
+
         }
     }
 }
