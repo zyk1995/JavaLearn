@@ -4,6 +4,7 @@ package com.zyk.jvm.gc;
 // https://mp.weixin.qq.com/s/rPwj9ClPORiltlIQowYWYA
 
 import com.zyk.jvm.entity.Test;
+import sun.misc.GC;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -73,6 +74,7 @@ public class TestLocalVarivableGC {
     }
 
     private static void OOM_NEW() {
+//        GC overhead limit exceeded 当JVM花太多时间执行垃圾回收并且只能回收很少的堆空间时，就会发生该错误
         while (true) {
             Test test = new Test();
             test = null;
