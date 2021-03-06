@@ -16,12 +16,13 @@ public class TestLocalVarivableGC {
 
         //“不使用的对象应手动赋值为null“时大胆去用，但不应当对其有过多依赖，更不能当作是一个普遍规则来推广。
 
-        // 不使用的对象赋值为null，只是代表在gc的时候对象一定能被回收
-//        gc1();
-//        gc2();
+//         不使用的对象赋值为null，只是代表在gc的时候对象一定能被回收
+        gc1();
+        gc1();
+
 //        gc3();
  //       gc4();
-        gcLoop1();
+        //gcLoop1();
 //        gcLoopLoop();
        // OOM_HOLD();
         //OOM_NEW();
