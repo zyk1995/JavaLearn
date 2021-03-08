@@ -1,7 +1,8 @@
 package com.zyk.jvm.gc;
 
-
+// 不使用的对象应手动赋值为null 的意义
 // https://mp.weixin.qq.com/s/rPwj9ClPORiltlIQowYWYA
+// 流式查询原理
 // https://mp.weixin.qq.com/s/-gljMMrP0RcALfvigFXT1Q
 import com.zyk.jvm.entity.Test;
 
