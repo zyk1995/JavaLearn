@@ -2,9 +2,8 @@ package com.zyk.jvm.gc;
 
 
 // https://mp.weixin.qq.com/s/rPwj9ClPORiltlIQowYWYA
-
+// https://mp.weixin.qq.com/s/-gljMMrP0RcALfvigFXT1Q
 import com.zyk.jvm.entity.Test;
-import sun.misc.GC;
 
 import java.util.ArrayList;
 import java.util.List;
